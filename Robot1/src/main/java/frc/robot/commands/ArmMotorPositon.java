@@ -45,7 +45,7 @@ public class ArmMotorPositon extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(arm.getEncoderPosition() - this.position) > ArmMotionMagicConstants.LimitPosition){
+    if (Math.abs(arm.getEncoderPosition() - this.position) < ArmMotionMagicConstants.LimitPosition){
           return (this.timer.hasElapsed(ArmMotionMagicConstants.timeLimit));
     }
     else{
