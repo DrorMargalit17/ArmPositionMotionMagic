@@ -35,7 +35,7 @@ public final class Constants {
     public static final double PeakForwardVoltage = 11.5;
     public static final double PeakRevarsedVoltage = -11.5;
     public static final int SensorToMechanismRatio = 50;
-    public static final double Limit = 0.01;
+    public static final double LimitPosition = 0.01;
     public static final int timeLimit = 3; 
   }
 

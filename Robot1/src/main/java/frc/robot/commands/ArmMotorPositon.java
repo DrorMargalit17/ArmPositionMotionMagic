@@ -7,11 +7,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.ArmMotionMagicConstants;
-import frc.robot.subsystems.ArmMotionMagic;
+import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmMotorPositon extends CommandBase {
 
-  private final ArmMotionMagic arm = ArmMotionMagic.getInstance();
+  private final ArmSubsystem arm = ArmSubsystem.getInstance();
   Timer timer;
   double position;
 
@@ -19,6 +19,7 @@ public class ArmMotorPositon extends CommandBase {
   public ArmMotorPositon(Double position) {
     this.position = position;
     this.addRequirements(arm);
+    this.timer = new Timer();
     this.timer.start();
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -44,7 +45,7 @@ public class ArmMotorPositon extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Math.abs(arm.getEncoderPosition() - this.position) > ArmMotionMagicConstants.Limit){
+    if (Math.abs(arm.getEncoderPosition() - this.position) > ArmMotionMagicConstants.LimitPosition){
           return (this.timer.hasElapsed(ArmMotionMagicConstants.timeLimit));
     }
     else{

@@ -14,13 +14,13 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ArmMotionMagicConstants;
 
-public class ArmMotionMagic extends SubsystemBase {
+public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ArmMotionMagic. */
   private TalonFX motor; 
 
   private final MotionMagicVoltage motionMagic = new MotionMagicVoltage(0);
 
-  private ArmMotionMagic() {
+  private ArmSubsystem() {
     this.motor = new TalonFX(ArmMotionMagicConstants.KMotorID);
 
     TalonFXConfiguration configs = new TalonFXConfiguration();
@@ -57,11 +57,11 @@ public class ArmMotionMagic extends SubsystemBase {
     motor.setControl(motionMagic.withPosition(position));
   }
 
-  private static ArmMotionMagic instance;
+  private static ArmSubsystem instance;
   
-  public static ArmMotionMagic getInstance(){
+  public static ArmSubsystem getInstance(){
     if (instance==null){
-      instance = new ArmMotionMagic();
+      instance = new ArmSubsystem();
     }
     return instance;
   }
